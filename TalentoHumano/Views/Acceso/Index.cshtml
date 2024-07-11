@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css/Login.css")
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <form action="@Url.Action("Index","Acceso")" method="post">
+                <div class="form-group moveable-div">
+                    <input class="form-control" type="email" name="correo" placeholder="Ingrese su Correo" required />
+                    <input class="form-control" type="password" name="clave" placeholder="Ingrese su Contraseña" required />
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+            
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

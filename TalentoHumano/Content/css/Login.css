@@ -1,0 +1,72 @@
+﻿body {
+    background-image: url(../img/Login.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%; /* Ajusta la imagen de fondo para cubrir todo el body */
+    opacity: 0.99;
+    margin: 0; /* Elimina el margen predeterminado del body */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido del body */
+    align-items: center; /* Centra verticalmente el contenido del body */
+    height: 100vh; /* Aprovecha el 100% del viewport height */
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 30px;
+    width: 500px; /* Ancho del formulario ajustado */
+    height: 300px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor del formulario */
+    margin-left: 60%;
+    transition: box-shadow 0.3s ease; /* Transición para la sombra */
+    /* Propiedades para el efecto hover */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+    form:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al pasar el cursor */
+    }
+
+
+.moveable-div {
+    margin-bottom: 20px; /* Espacio entre los grupos de formulario */
+    margin-top: 70px;
+    margin-left:130px;
+}
+
+button {
+    margin-top: 10px; /* Espacio sobre el botón */
+    border-radius: 30px;
+    width: 30%; /* Ancho completo del botón dentro del formulario */
+    height: 40px; /* Altura del botón */
+    border: none;
+    background-color: rgb(238, 88, 88);
+    cursor: pointer;
+    margin-left: 35%;
+    font-family:sans-serif;
+    font-size:20px;
+
+}
+
+.form-group input {
+    width: 70%; /* Ancho completo dentro del contenedor */
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 30px;
+    border-color: rgba(255, 0, 0, 0.3);
+    background-color: none;
+    color: rgb(0,0,0)
+}
+
+input.form-control::placeholder {
+    color: rgb(148, 148, 148 );
+}
+
+input.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}

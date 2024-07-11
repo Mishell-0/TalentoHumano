@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TalentoHumanoModelStoreContainer" CdmEntityContainer="TalentoHumanoEntities">
+    <EntitySetMapping Name="DetalleRolPagos">
+      <EntityTypeMapping TypeName="TalentoHumanoModel.DetalleRolPagos">
+        <MappingFragment StoreEntitySet="DetalleRolPagos">
+          <ScalarProperty Name="TotalIngresos" ColumnName="TotalIngresos" />
+          <ScalarProperty Name="SubDescuentos" ColumnName="SubDescuentos" />
+          <ScalarProperty Name="SubIngresos" ColumnName="SubIngresos" />
+          <ScalarProperty Name="OtrosDescuentos" ColumnName="OtrosDescuentos" />
+          <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
+          <ScalarProperty Name="PrestamoHipotecario" ColumnName="PrestamoHipotecario" />
+          <ScalarProperty Name="PrestamoQuirografario" ColumnName="PrestamoQuirografario" />
+          <ScalarProperty Name="ImpuestoRenta" ColumnName="ImpuestoRenta" />
+          <ScalarProperty Name="DescuentoAtrasos" ColumnName="DescuentoAtrasos" />
+          <ScalarProperty Name="AportacionIESS" ColumnName="AportacionIESS" />
+          <ScalarProperty Name="OtrosIngresos" ColumnName="OtrosIngresos" />
+          <ScalarProperty Name="Alimentacion" ColumnName="Alimentacion" />
+          <ScalarProperty Name="FondoReserva" ColumnName="FondoReserva" />
+          <ScalarProperty Name="Bonificaciones" ColumnName="Bonificaciones" />
+          <ScalarProperty Name="HorasSuplementarias" ColumnName="HorasSuplementarias" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="idRolPagos" ColumnName="idRolPagos" />
+          <ScalarProperty Name="idDetalleRolPagos" ColumnName="idDetalleRolPagos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="TalentoHumanoModel.Empleados">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="Prestamos" ColumnName="Prestamos" />
+          <ScalarProperty Name="OtrosDescuentos" ColumnName="OtrosDescuentos" />
+          <ScalarProperty Name="Seguro" ColumnName="Seguro" />
+          <ScalarProperty Name="Anticipos" ColumnName="Anticipos" />
+          <ScalarProperty Name="PrestamoQuirografario" ColumnName="PrestamoQuirografario" />
+          <ScalarProperty Name="PrestamoHipotecario" ColumnName="PrestamoHipotecario" />
+          <ScalarProperty Name="ImpuestoRenta" ColumnName="ImpuestoRenta" />
+          <ScalarProperty Name="AportacionIESS" ColumnName="AportacionIESS" />
+          <ScalarProperty Name="descuentoAtrasos" ColumnName="descuentoAtrasos" />
+          <ScalarProperty Name="ValorMinuto" ColumnName="ValorMinuto" />
+          <ScalarProperty Name="MinutosAtraso" ColumnName="MinutosAtraso" />
+          <ScalarProperty Name="OtrosIngresos" ColumnName="OtrosIngresos" />
+          <ScalarProperty Name="Alimentacion" ColumnName="Alimentacion" />
+          <ScalarProperty Name="FondoReserva" ColumnName="FondoReserva" />
+          <ScalarProperty Name="Bonificaciones" ColumnName="Bonificaciones" />
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="HorasSuplementarias" ColumnName="HorasSuplementarias" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="idEmpleados" ColumnName="idEmpleados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolPagos">
+      <EntityTypeMapping TypeName="TalentoHumanoModel.RolPagos">
+        <MappingFragment StoreEntitySet="RolPagos">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="idRolPagos" ColumnName="idRolPagos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

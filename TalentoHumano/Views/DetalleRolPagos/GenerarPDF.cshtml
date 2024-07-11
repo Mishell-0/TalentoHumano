@@ -1,0 +1,157 @@
+﻿@model TalentoHumano.Models.DetalleRolPagos
+@{
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+    Layout = Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/css/Site.css" />
+<h2 class="text-center mb-4"> Rol de Pagos</h2>
+<br />
+
+<div class="container">
+    <div class="card-body">
+
+        <div id="datosEmpleado">
+
+            <div class="form-group text-center">
+                <div class="col-md-12">
+                    <span>
+                        <strong>Cedula::</strong> <span id="cedulaEmpleado" class="form-control-static">@Model.Empleados.Cedula</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <strong>Nombre:</strong> <span id="nombreEmpleado" class="form-control-static">@Model.Empleados.Nombres</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <strong>Cargo:</strong> <span id="cargoEmpleado" class="form-control-static">@Model.Empleados.Cargo</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <strong>Fecha:</strong> <span id="fechaActual" class="form-control-static">@DateTime.Now.ToShortDateString()</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <strong>Días Trabajados:</strong> <span id="diasTrabajados" class="form-control-static">@Model.Empleados.DiasTrabajados</span>
+                    </span>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <!-- Ingresos -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <table class="table">
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Monto</th>
+                            </tr>
+                            <tr>
+                                <td>REMUNERACIÓN MENSUAL</td>
+                                <td><span id="sueldoEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.Sueldo)</span></td>
+                            </tr>
+                            <tr>
+                                <td>HORAS SUPLEMENTARIAS Y EXTRAORDINARIAS</td>
+                                <td><span id="horasSuplementariasEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.HorasSuplementarias)</span></td>
+                            </tr>
+                            <tr>
+                                <td>BONIFICACIÓN COMISIONES</td>
+                                <td><span id="bonificacionesEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.Bonificaciones)</span></td>
+                            </tr>
+                            <tr>
+                                <td>FONDO DE RESERVA</td>
+                                <td><span id="fondoReservaEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.FondoReserva)</span></td>
+                            </tr>
+                            <tr>
+                                <td>ALIMENTACIÓN</td>
+                                <td><span id="alimentacionEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.Alimentacion)</span></td>
+                            </tr>
+                            <tr>
+                                <td>OTROS INGRESOS</td>
+                                <td><span id="otrosIngresosEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", Model.OtrosIngresos)</span></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Ingresos</strong></td>
+                                <td><span id="totalIngresos" class="form-control-static">@string.Format(culture, "{0:C2}", Model.SubIngresos)</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Descuentos -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <table class="table">
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Monto</th>
+                            </tr>
+                            <tr>
+                                <td>APORTACION IESS (9,45%)</td>
+                                <td><span id="aportacionIESS" class="form-control-static">@string.Format(culture, "{0:C2}", Model.AportacionIESS)</span></td>
+                            </tr>
+                            <tr>
+                                <td>ATRASOS/FALTAS</td>
+                                <td><span id="descuentoAtrasos" class="form-control-static">@string.Format(culture, "{0:C2}", Model.DescuentoAtrasos)</span></td>
+                            </tr>
+                            <tr>
+                                <td>IMPUESTO A LA RENTA</td>
+                                <td><span id="impuestoRenta" class="form-control-static">@string.Format(culture, "{0:C2}", Model.ImpuestoRenta)</span></td>
+                            </tr>
+                            <tr>
+                                <td>PRÉSTAMO QUIROGRAFARIO</td>
+                                <td><span id="prestamoQuirografario" class="form-control-static">@string.Format(culture, "{0:C2}", Model.PrestamoQuirografario)</span></td>
+                            </tr>
+                            <tr>
+                                <td>PRÉSTAMO HIPOTECARIO</td>
+                                <td><span id="prestamoHipotecario" class="form-control-static">@string.Format(culture, "{0:C2}", Model.PrestamoHipotecario)</span></td>
+                            </tr>
+                            <tr>
+                                <td>ANTICIPOS</td>
+                                <td><span id="anticipos" class="form-control-static">@string.Format(culture, "{0:C2}", Model.Anticipos)</span></td>
+                            </tr>
+                            <tr>
+                                <td>OTROS DESCUENTOS</td>
+                                <td><span id="otrosDescuentos" class="form-control-static">@string.Format(culture, "{0:C2}", Model.OtrosDescuentos)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Descuentos</strong></td>
+                                <td><span id="totalDescuentos" class="form-control-static">@string.Format(culture, "{0:C2}", Model.SubDescuentos)</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total a recibir -->
+            <div class="form-group">
+                <label class="control-label col-md-2">Total a Recibir</label>
+                <div class="col-md-10">
+                    <span id="totalRecibir" class="form-control-static">@string.Format(culture, "{0:C2}", Model.TotalIngresos)</span>
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <hr>
+                        <br />
+                        <br />
+                        <span class="form-control-static">@Model.Empleados.Nombres</span><br>
+                        <label class="control-label">Recibí Conforme</label>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-md-6 text-center">
+                        <hr>
+                        <label class="control-label">Talento Humano</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+

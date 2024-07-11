@@ -1,0 +1,158 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 1px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Responsive table container */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    max-width: none; /* Ensure the table does not have a max-width */
+    text-align: center;
+}
+
+    /* Optional: You can adjust specific table styles if necessary */
+    .table th,
+    .table td {
+        white-space: nowrap; /* Prevent line breaks in table cells */
+    }
+
+/* Styles for the sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #dc3545; /* Sidebar background color */
+    color: #ffffff; /* Text color */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    z-index: 1000; /* Ensure the sidebar is above the content */
+}
+
+    .sidebar header {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #000000; /* Header background color */
+    }
+
+        .sidebar header .image-text {
+            display: flex;
+            align-items: center;
+        }
+
+            .sidebar header .image-text .image img {
+                width: 40px; /* Logo image size */
+                height: 40px;
+                border-radius: 50%; /* Rounded border for the image */
+                margin-right: 10px;
+            }
+
+            .sidebar header .image-text .text {
+                font-size: 1.2rem; /* Font size for the logo text */
+            }
+
+    .sidebar .menu-bar {
+        padding: 15px;
+    }
+
+        .sidebar .menu-bar .menu {
+            margin-bottom: 20px;
+        }
+
+            .sidebar .menu-bar .menu .menu-links .nav-link {
+                list-style-type: none !important; /* Remove list bullets */
+                align-items: center;
+            }
+
+                .sidebar .menu-bar .menu .menu-links .nav-link a {
+                    display: flex;
+                    align-items: center;
+                    color: #ffffff; /* Link text color */
+                    text-decoration: none;
+                    padding: 10px 15px;
+                    transition: background-color 0.3s ease;
+                    border-radius: 30px;
+                }
+
+                    .sidebar .menu-bar .menu .menu-links .nav-link a:hover {
+                        background-color: #ffffff; /* Background color on hover */
+                        color: #000000; /* Text color on hover */
+                        border-radius: 30px;
+                    }
+
+    .sidebar .bottom-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: #dc3545; /* Bottom content background color */
+    }
+
+.side .nav-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* Link text color */
+    padding: 10px 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .bottom-content .nav-link a:hover {
+    background-color: #ffffff; /* Background color on hover */
+    color: #000000; /* Text color on hover */
+    border-radius: 30px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.custom-img {
+    width: 400px;
+    max-width: 600px;
+    height: 150px;
+}
+
+.navbar-brand{
+    height:150px;
+}
+/* Additional responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide the sidebar on small screens */
+    }
+
+        .sidebar.open {
+            display: block; /* Show the sidebar when open */
+        }
+
+    .navbar-brand img {
+        max-width: 100%;
+        height: auto;
+    }
+}

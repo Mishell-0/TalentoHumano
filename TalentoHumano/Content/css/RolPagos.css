@@ -1,0 +1,47 @@
+﻿/* Estilos para la tabla */
+.detalle-empleado {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .detalle-empleado th, .detalle-empleado td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .detalle-empleado th {
+        background-color: #f2f2f2;
+    }
+
+    .detalle-empleado td {
+        vertical-align: top;
+    }
+
+.table {
+    width: 100%;
+}
+
+    .table th, .table td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+    }
+
+.container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control-static {
+    display: inline-block;
+}

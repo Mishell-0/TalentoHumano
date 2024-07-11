@@ -1,0 +1,209 @@
+﻿@model TalentoHumano.Models.RolPagos
+
+@{
+    ViewBag.Title = "Crear Rol de Pagos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crear Rol de Pagos</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Datos de Rol de Pagos</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idEmpleado, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.idEmpleado, ViewBag.idEmpleado as SelectList, "Seleccione un Empleado", htmlAttributes: new { @class = "form-control", id = "idEmpleado" })
+                @Html.ValidationMessageFor(model => model.idEmpleado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Mostrar datos adicionales del empleado -->
+        <div id="datosEmpleado" style="display: none;">
+            <div class="form-group text-center">
+                <div class="col-md-12">
+                    <span>
+                        <strong>Nombre:</strong> <span id="nombreEmpleado" class="form-control-static"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>Cargo:</strong> <span id="cargoEmpleado" class="form-control-static"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>Fecha:</strong> <span id="fechaActual" class="form-control-static"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Ingresos -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <table class="table">
+                            <tr>
+                                <th>INGRESOS</th>
+                                <th>Monto</th>
+                            </tr>
+                            <tr>
+                                <td>REMUNERACIÓN MENSUAL</td>
+                                <td><span id="sueldoEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>HORAS SUPLEMENTARIAS Y EXTRAORDINARIAS</td>
+                                <td><span id="horasSuplementariasEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>BONIFICACIÓN COMISIONES</td>
+                                <td><span id="bonificacionesEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>FONDO DE RESERVA</td>
+                                <td><span id="fondoReservaEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>ALIMENTACIÓN</td>
+                                <td><span id="alimentacionEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>OTROS INGRESOS</td>
+                                <td><span id="otrosIngresosEmpleado" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Ingresos</strong></td>
+                                <td><span id="totalIngresos" class="form-control-static"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Descuentos -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <table class="table">
+                            <tr>
+                                <th>DESCUENTOS</th>
+                                <th>Monto</th>
+                            </tr>
+                            <tr>
+                                <td>APORTACION IESS (9,45%)</td>
+                                <td><span id="aportacionIESS" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>ATRASOS/FALTAS</td>
+                                <td><span id="descuentoAtrasos" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>IMPUESTO A LA RENTA</td>
+                                <td><span id="impuestoRenta" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>PRÉSTAMO QUIROGRAFARIO</td>
+                                <td><span id="prestamoQuirografario" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>PRÉSTAMO HIPOTECARIO</td>
+                                <td><span id="prestamoHipotecario" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>ANTICIPOS</td>
+                                <td><span id="anticipos" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td>OTROS DESCUENTOS</td>
+                                <td><span id="otrosDescuentos" class="form-control-static"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Descuentos</strong></td>
+                                <td><span id="totalDescuentos" class="form-control-static"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total a recibir -->
+            <div class="form-group">
+                <label class="control-label col-md-2">Total a Recibir</label>
+                <div class="col-md-10">
+                    <span id="totalRecibir" class="form-control-static"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('#idEmpleado').change(function () {
+                var selectedId = $(this).val();
+                if (selectedId) {
+                    $.getJSON('@Url.Action("GetEmpleadoDetails", "DetalleRolPagos")', { id: selectedId }, function (data) {
+                        // Convertir valores nulos o indefinidos a cero
+                        var sueldo = parseFloat(data.Sueldo) || 0;
+                        var horasSuplementarias = parseFloat(data.HorasSuplementarias) || 0;
+                        var bonificaciones = parseFloat(data.Bonificaciones) || 0;
+                        var fondoReserva = parseFloat(data.FondoReserva) || 0;
+                        var alimentacion = parseFloat(data.Alimentacion) || 0;
+                        var otrosIngresos = parseFloat(data.OtrosIngresos) || 0;
+
+                        var aportacionIESS = parseFloat(data.AportacionIESS) || 0;
+                        var descuentoAtrasos = parseFloat(data.descuentoAtrasos) || 0;
+                        var impuestoRenta = parseFloat(data.ImpuestoRenta) || 0;
+                        var prestamoQuirografario = parseFloat(data.PrestamoQuirografario) || 0;
+                        var prestamoHipotecario = parseFloat(data.PrestamoHipotecario) || 0;
+                        var anticipos = parseFloat(data.Anticipos) || 0;
+                        var otrosDescuentos = parseFloat(data.OtrosDescuentos) || 0;
+
+                        // Sumar ingresos
+                        var totalIngresos = sueldo + horasSuplementarias + bonificaciones + fondoReserva + alimentacion + otrosIngresos;
+
+                        // Sumar descuentos
+                        var totalDescuentos = aportacionIESS + descuentoAtrasos + impuestoRenta + prestamoQuirografario + prestamoHipotecario + anticipos + otrosDescuentos;
+
+                        // Calcular total a recibir
+                        var totalRecibir = totalIngresos - totalDescuentos;
+
+                        $('#nombreEmpleado').text(data.Nombres);
+                        $('#cargoEmpleado').text(data.Cargo);
+                        $('#fechaActual').text(new Date().toLocaleDateString());
+                        $('#sueldoEmpleado').text(sueldo.toFixed(2));
+                        $('#horasSuplementariasEmpleado').text(horasSuplementarias.toFixed(2));
+                        $('#bonificacionesEmpleado').text(bonificaciones.toFixed(2));
+                        $('#fondoReservaEmpleado').text(fondoReserva.toFixed(2));
+                        $('#alimentacionEmpleado').text(alimentacion.toFixed(2));
+                        $('#otrosIngresosEmpleado').text(otrosIngresos.toFixed(2));
+                        $('#aportacionIESS').text(aportacionIESS.toFixed(2));
+                        $('#descuentoAtrasos').text(descuentoAtrasos.toFixed(2));
+                        $('#impuestoRenta').text(impuestoRenta.toFixed(2));
+                        $('#prestamoQuirografario').text(prestamoQuirografario.toFixed(2));
+                        $('#prestamoHipotecario').text(prestamoHipotecario.toFixed(2));
+                        $('#anticipos').text(anticipos.toFixed(2));
+                        $('#otrosDescuentos').text(otrosDescuentos.toFixed(2));
+                        $('#totalIngresos').text(totalIngresos.toFixed(2));
+                        $('#totalDescuentos').text(totalDescuentos.toFixed(2));
+                        $('#totalRecibir').text(totalRecibir.toFixed(2));
+
+                        $('#datosEmpleado').show();
+                    });
+                } else {
+                    $('#datosEmpleado').hide();
+                }
+            });
+        });
+    </script>
+}

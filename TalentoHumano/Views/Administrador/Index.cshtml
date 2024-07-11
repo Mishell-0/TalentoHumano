@@ -1,0 +1,102 @@
+﻿@model IEnumerable<TalentoHumano.Models.Empleados>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+}
+
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.idEmpleados)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cedula)</th>
+                    <th>@Html.DisplayNameFor(model => model.Nombres)</th>
+                    <th>@Html.DisplayNameFor(model => model.TipoContrato)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cargo)</th>
+                    <th>@Html.DisplayNameFor(model => model.FechaEntrada)</th>
+                    <th>@Html.DisplayNameFor(model => model.FechaSalida)</th>
+                    <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                    <th>@Html.DisplayNameFor(model => model.Sueldo)</th>
+                    <th>@Html.DisplayNameFor(model => model.HorasSuplementarias)</th>
+                    <th>@Html.DisplayNameFor(model => model.DiasTrabajados)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bonificaciones)</th>
+                    <th>@Html.DisplayNameFor(model => model.FondoReserva)</th>
+                    <th>@Html.DisplayNameFor(model => model.Alimentacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.OtrosIngresos)</th>
+                    <th>@Html.DisplayNameFor(model => model.MinutosAtraso)</th>
+                    <th>@Html.DisplayNameFor(model => model.ValorMinuto)</th>
+                    <th>@Html.DisplayNameFor(model => model.descuentoAtrasos)</th>
+                    <th>@Html.DisplayNameFor(model => model.AportacionIESS)</th>
+                    <th>@Html.DisplayNameFor(model => model.ImpuestoRenta)</th>
+                    <th>@Html.DisplayNameFor(model => model.PrestamoHipotecario)</th>
+                    <th>@Html.DisplayNameFor(model => model.PrestamoQuirografario)</th>
+                    <th>@Html.DisplayNameFor(model => model.Anticipos)</th>
+                    <th>@Html.DisplayNameFor(model => model.Seguro)</th>
+                    <th>@Html.DisplayNameFor(model => model.OtrosDescuentos)</th>
+                    <th>@Html.DisplayNameFor(model => model.Prestamos)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.idEmpleados)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cedula)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TipoContrato)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cargo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FechaEntrada)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FechaSalida)</td>
+                        <td>
+                            @if (item.Estado)
+                            {
+                                <text>Activo</text>
+                            }
+                            else
+                            {
+                                <text>Inactivo</text>
+                            }
+                        </td>
+                        <td><span id="Sueldo" class="form-control-static">@string.Format(culture, "{0:C2}", item.Sueldo)</span></td>
+                        <td><span id="HorasEmpleado" class="form-control-static">@string.Format(culture, "{0:C2}", item.HorasSuplementarias)</span></td>
+                        <td><span id="DiasTrabajado" class="form-control-static">@item.DiasTrabajados</span></td>
+                        <td><span id="Bonificaciones" class="form-control-static">@string.Format(culture, "{0:C2}", item.Bonificaciones)</span></td>
+                        <td><span id="FondoReserva" class="form-control-static">@string.Format(culture, "{0:C2}", item.FondoReserva)</span></td>
+                        <td><span id="Alimentacion" class="form-control-static">@string.Format(culture, "{0:C2}", item.Alimentacion)</span></td>
+                        <td><span id="OtrosIngresos" class="form-control-static">@string.Format(culture, "{0:C2}", item.OtrosIngresos)</span></td>
+                        <td><span id="MinutosAtrasos" class="form-control-static">@item.MinutosAtraso</span></td>
+                        <td><span id="ValorMinuto" class="form-control-static">@string.Format(culture, "{0:C2}", item.ValorMinuto)</span></td>
+                        <td><span id="DescuentoAtrasos" class="form-control-static">@string.Format(culture, "{0:C2}", item.descuentoAtrasos)</span></td>
+                        <td><span id="AportacionIESS" class="form-control-static">@string.Format(culture, "{0:C2}", item.AportacionIESS)</span></td>
+                        <td><span id="ImpuestoRenta" class="form-control-static">@string.Format(culture, "{0:C2}", item.ImpuestoRenta)</span></td>
+                        <td><span id="PrestamoHipotecario" class="form-control-static">@string.Format(culture, "{0:C2}", item.PrestamoHipotecario)</span></td>
+                        <td><span id="PrestamoQuirografario" class="form-control-static">@string.Format(culture, "{0:C2}", item.PrestamoQuirografario)</span></td>
+                        <td><span id="Anticipos" class="form-control-static">@string.Format(culture, "{0:C2}", item.Anticipos)</span></td>
+                        <td><span id="Seguro" class="form-control-static">@string.Format(culture, "{0:C2}", item.Seguro)</span></td>
+                        <td><span id="OtrosDescuentos" class="form-control-static">@string.Format(culture, "{0:C2}", item.OtrosDescuentos)</span></td>
+                        <td><span id="Prestamos" class="form-control-static">@string.Format(culture, "{0:C2}", item.Prestamos)</span></td>
+
+
+                        <td>
+                            <button class="btn btn-sm btn-success btn" onclick="changeEstado('@item.idEmpleados')">@(item.Estado ? "Desactivar" : "Activar")</button>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.idEmpleados }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Detalles", "Details", new { id = item.idEmpleados }, new { @class = "btn btn-secondary" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.idEmpleados }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        var cambiarEstadoUrl = '@Url.Action("CambiarEstado", "Administrador")';
+    </script>
+    <script src="~/Scripts/custom.js"></script>
+}

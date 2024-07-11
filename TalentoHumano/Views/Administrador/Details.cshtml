@@ -1,0 +1,228 @@
+﻿@model TalentoHumano.Models.Empleados
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idEmpleados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idEmpleados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoContrato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sueldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sueldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasSuplementarias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorasSuplementarias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasTrabajados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasTrabajados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bonificaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bonificaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FondoReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FondoReserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alimentacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alimentacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtrosIngresos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtrosIngresos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinutosAtraso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinutosAtraso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorMinuto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorMinuto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descuentoAtrasos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descuentoAtrasos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AportacionIESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AportacionIESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpuestoRenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpuestoRenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrestamoHipotecario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrestamoHipotecario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrestamoQuirografario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrestamoQuirografario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anticipos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anticipos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seguro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtrosDescuentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtrosDescuentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prestamos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prestamos)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

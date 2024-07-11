@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TalentoHumanoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DetalleRolPagos">
+    <Key>
+      <PropertyRef Name="idDetalleRolPagos" />
+    </Key>
+    <Property Name="idDetalleRolPagos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRolPagos" Type="int" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+    <Property Name="Sueldo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="HorasSuplementarias" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Bonificaciones" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FondoReserva" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Alimentacion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OtrosIngresos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AportacionIESS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DescuentoAtrasos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ImpuestoRenta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PrestamoQuirografario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PrestamoHipotecario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Anticipos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OtrosDescuentos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SubIngresos" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="SubDescuentos" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalIngresos" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="idEmpleados" />
+    </Key>
+    <Property Name="idEmpleados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TipoContrato" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="FechaEntrada" Type="datetime" Nullable="false" />
+    <Property Name="FechaSalida" Type="datetime" />
+    <Property Name="Sueldo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="HorasSuplementarias" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DiasTrabajados" Type="int" Nullable="false" />
+    <Property Name="Bonificaciones" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FondoReserva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Alimentacion" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="OtrosIngresos" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MinutosAtraso" Type="int" />
+    <Property Name="ValorMinuto" Type="numeric" Precision="23" Scale="4" StoreGeneratedPattern="Computed" />
+    <Property Name="descuentoAtrasos" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AportacionIESS" Type="numeric" Precision="25" Scale="4" StoreGeneratedPattern="Computed" />
+    <Property Name="ImpuestoRenta" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PrestamoHipotecario" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PrestamoQuirografario" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Anticipos" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Seguro" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OtrosDescuentos" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Prestamos" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="RolPagos">
+    <Key>
+      <PropertyRef Name="idRolPagos" />
+    </Key>
+    <Property Name="idRolPagos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DetalleRolPagos_Empleados">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="DetalleRolPagos" Type="Self.DetalleRolPagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="idEmpleados" />
+      </Principal>
+      <Dependent Role="DetalleRolPagos">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleRolPagos_RolPagos">
+    <End Role="RolPagos" Type="Self.RolPagos" Multiplicity="1" />
+    <End Role="DetalleRolPagos" Type="Self.DetalleRolPagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RolPagos">
+        <PropertyRef Name="idRolPagos" />
+      </Principal>
+      <Dependent Role="DetalleRolPagos">
+        <PropertyRef Name="idRolPagos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolPagos_Empleados">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="RolPagos" Type="Self.RolPagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="idEmpleados" />
+      </Principal>
+      <Dependent Role="RolPagos">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TalentoHumanoModelStoreContainer">
+    <EntitySet Name="DetalleRolPagos" EntityType="Self.DetalleRolPagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolPagos" EntityType="Self.RolPagos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DetalleRolPagos_Empleados" Association="Self.FK_DetalleRolPagos_Empleados">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="DetalleRolPagos" EntitySet="DetalleRolPagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleRolPagos_RolPagos" Association="Self.FK_DetalleRolPagos_RolPagos">
+      <End Role="RolPagos" EntitySet="RolPagos" />
+      <End Role="DetalleRolPagos" EntitySet="DetalleRolPagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolPagos_Empleados" Association="Self.FK_RolPagos_Empleados">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="RolPagos" EntitySet="RolPagos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
